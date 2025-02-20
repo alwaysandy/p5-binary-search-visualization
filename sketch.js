@@ -52,6 +52,21 @@ class Pointer {
       fill(255, 0, 0);
     }
 
+    // Animate pointer movement
+    if (this.x != this.new_x) {
+      if (this.x < this.new_x) {
+        this.x++;
+      } else {
+        this.x--;
+      }
+    } else if (this.y != this.new_y) {
+      if (this.y < this.new_y) {
+        this.y++;
+      } else {
+        this.y--;
+      }
+    }
+
     triangle(this.x - 7, this.y + 45, this.x, this.y + 35, this.x + 7, this.y + 45);
   }
 }
@@ -196,23 +211,6 @@ function setIsntFindable() {
   }
 }
 
-// Update x value until it reaches 'new_x' then update y until it reaches 'new_y'
-function animatePointer(pointer) {
-  if (pointer.x != pointer.new_x) {
-    if (pointer.x < pointer.new_x) {
-      pointer.x += 1;
-    } else {
-      pointer.x -= 1;
-    }
-  } else if (pointer.y != pointer.new_y) {
-    if (pointer.y < pointer.new_y) {
-      pointer.y += 1;
-    } else {
-      pointer.y -= 1;
-    }
-  }
-}
-
 function draw() {
   background(255);
   frameRate(144);
@@ -220,10 +218,6 @@ function draw() {
   for (let nb of NUM_BOXES) {
     nb.show();
   }
-
-  animatePointer(lowPointer);
-  animatePointer(midPointer);
-  animatePointer(highPointer);
 
   lowPointer.show();
   midPointer.show();
