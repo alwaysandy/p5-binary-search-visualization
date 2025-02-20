@@ -62,7 +62,7 @@ class Pointer {
 const SQUARESIZE = 60;
 const PADDING = 20;
 const TO_SEARCH = [-81, -3, 5, 19, 21, 111, 111, 111, 129, 252];
-const TO_FIND = -2;
+const TO_FIND = -3;
 
 // Stores the square with number inside objects
 const NUM_BOXES = [];
