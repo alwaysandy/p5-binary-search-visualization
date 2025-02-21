@@ -54,16 +54,20 @@ class Pointer {
 
     // Animate pointer movement
     if (this.x != this.new_x) {
-      if (this.x < this.new_x) {
-        this.x++;
+      if (Math.abs(this.x - this.new_x) < MOVE_SPEED) {
+        this.x = this.new_x;
+      } else if (this.x < this.new_x) {
+        this.x += MOVE_SPEED;
       } else {
-        this.x--;
+        this.x -= MOVE_SPEED;
       }
     } else if (this.y != this.new_y) {
-      if (this.y < this.new_y) {
-        this.y++;
-      } else {
-        this.y--;
+      if (Math.abs(this.y - this.new_y) < MOVE_SPEED) {
+        this.y = this.new_y;
+      } else if(this.y < this.new_y) {
+        this.y += MOVE_SPEED;
+      } else if (this.y > this.new_y) {
+        this.y -= MOVE_SPEED;
       }
     }
 
@@ -77,7 +81,9 @@ class Pointer {
 const SQUARESIZE = 60;
 const PADDING = 20;
 const TO_SEARCH = [-81, -3, 5, 19, 21, 111, 111, 111, 129, 252];
-const TO_FIND = -82;
+const TO_FIND = 129;
+
+const MOVE_SPEED = 5;
 
 // Stores the square with number inside objects
 const NUM_BOXES = [];
@@ -222,4 +228,5 @@ function draw() {
   lowPointer.show();
   midPointer.show();
   highPointer.show();
+  console.log(frameRate());
 }
